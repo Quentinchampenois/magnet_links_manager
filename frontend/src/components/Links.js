@@ -1,0 +1,29 @@
+import React from 'react';
+import MagnetLink from './MagnetLink'
+import CreateLink from './CreateLink'
+
+class Links extends React.Component {
+  render() {
+    return (
+        <div className="">
+            <div>
+                <h1>Just a link</h1>
+            </div>
+            <div className={"row"}>
+                <div className={"columns medium-4"}>
+                    <CreateLink/>
+                </div>
+                <div className={"columns medium-4"}>
+                    <MagnetLink name="my name" magnetLink="a beautifiul link" description="Ma superbe description à propos de ce magnet link"/>
+                </div>
+                <div className={"columns medium-4"}>
+                    <MagnetLink name="my name" magnetLink="a beautifiul link" description="Ma superbe description à propos de ce magnet link"/>
+                </div>
+            </div>
+        </div>
+    );
+  }
+}
+
+
+export default Links;
