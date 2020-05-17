@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import 'foundation-sites/dist/css/foundation.min.css';
 import 'foundation-sites/dist/css/foundation-float.min.css';
-
+import 'foundation-sites/dist/css/foundation-prototype.min.css';
 
 import Links from "./components/Links";
 

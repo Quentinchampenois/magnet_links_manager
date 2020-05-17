@@ -1,5 +1,7 @@
 import React from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faCopy} from '@fortawesome/free-solid-svg-icons';
 
 class MagnetLink extends React.Component {
 
@@ -9,6 +11,12 @@ class MagnetLink extends React.Component {
             value: this.props.magnetLink,
             copied: false,
         };
+        this.copyToClipboard = this.copyToClipboard.bind(this)
+    }
+
+    copyToClipboard() {
+        this.setState({copied: true});
+        setTimeout(() => {this.setState({copied: false})}, 1000)
     }
 
     render() {
@@ -19,11 +27,12 @@ class MagnetLink extends React.Component {
                 </div>
                 <div className="card-section">
                     {this.props.description != null && this.props.description.length > 0 &&
-                        <p>{this.props.description}</p>
+                    <p>{this.props.description}</p>
                     }
+                    <span className="margin-right-1">{this.props.magnetLink}</span>
                     <CopyToClipboard text={this.state.value}
-                                     onCopy={() => this.setState({copied: true})}>
-                        <span>{this.props.magnetLink}</span>
+                                     onCopy={this.copyToClipboard}>
+                        <span><FontAwesomeIcon className="cursor-pointer" icon={faCopy}/></span>
                     </CopyToClipboard>
                     {this.state.copied ? <span style={{color: 'red'}}>Copied.</span> : null}
                 </div>
