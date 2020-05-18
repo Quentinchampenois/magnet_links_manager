@@ -14,10 +14,10 @@ class Links extends React.Component {
                     <CreateLink/>
                 </div>
                 <div className={"columns medium-4"}>
-                    <MagnetLink name="my name" magnetLink="a beautifiul link" description="Ma superbe description à propos de ce magnet link"/>
+                    <MagnetLink name="Awesome magnet" magnetLink="magnet:?xt=urn:btih:fake_magnet_link" description="Ma superbe description à propos de ce magnet link"/>
                 </div>
                 <div className={"columns medium-4"}>
-                    <MagnetLink name="my name" magnetLink="a beautifiul link" description="Ma superbe description à propos de ce magnet link"/>
+                    <MagnetLink name="Awesome file" magnetLink="magnet:?xt=urn:btih:fake_magnet_link" description="Ma superbe description à propos de ce magnet link"/>
                 </div>
             </div>
         </div>
