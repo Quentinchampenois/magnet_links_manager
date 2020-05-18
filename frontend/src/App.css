@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 #root {
   min-height: 100vh;
   background-color: #130e0e; }
@@ -12,6 +13,10 @@
   #root .button--save_magnet {
     color: white;
     border: 1px solid white; }
+  #root p, #root h1, #root h2, #root h3, #root button, #root label {
+    font-family: 'Montserrat', sans-serif; }
+  #root h3 {
+    font-size: 1.2rem; }
 
 .font-color--primary {
   color: white; }

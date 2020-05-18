@@ -6,8 +6,8 @@ class Links extends React.Component {
   render() {
     return (
         <div className="">
-            <div>
-                <h1>Just a link</h1>
+            <div className="text-center padding-vertical-3">
+                <h1>Store and share your magnet links !</h1>
             </div>
             <div className={"row"}>
                 <div className={"columns medium-4"}>
