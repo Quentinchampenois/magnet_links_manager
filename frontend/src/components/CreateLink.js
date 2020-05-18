@@ -23,10 +23,6 @@ class LinkForm extends React.Component {
         this.validator()
     }
 
-    componentWillUnmount() {
-        alert("stopppp")
-    }
-
     render() {
         return (
             <div className={"card font-color--primary"}>
