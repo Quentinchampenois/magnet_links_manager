@@ -1,7 +1,35 @@
-#root {
+@import 'stylesheets/variables';
 
+#root {
+  min-height: 100vh;
+  background-color: #130e0e;
+
+  .card {
+    -webkit-box-shadow: 0px 0px 20px -2px $primary--holow;
+    -moz-box-shadow: 0px 0px 20px -2px $primary--holow;
+    box-shadow: 0px 0px 20px -2px $primary--holow;
+    &-divider {
+      background: #191919;
+    }
+    &-section {
+      background: #252525;
+    }
+  }
+
+  .button--save_magnet {
+    color: $primary--color;
+    border: 1px solid $primary--color;
+  }
 }
 
+.font-color--primary {
+  color: $primary--color;
+}
+
+.primary--holow {
+  color: $primary--holow;
+  background-color: $primary--holow !important;
+}
 .cursor-pointer {
   cursor: pointer;
 }

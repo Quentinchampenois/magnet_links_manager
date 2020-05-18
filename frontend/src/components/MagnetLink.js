@@ -21,7 +21,7 @@ class MagnetLink extends React.Component {
 
     render() {
         return (
-            <div className="card">
+            <div className="card font-color--primary">
                 <div className="card-divider">
                     <h3>{this.props.name}</h3>
                 </div>

@@ -22,25 +22,25 @@ class LinkForm extends React.Component {
 
     render() {
         return (
-            <div className={"card"}>
+            <div className={"card font-color--primary"}>
                 <div className="card-divider">
                     <legend>Create new Magnet Link</legend>
                 </div>
                 <div className="card-section">
-                <form onSubmit={this.handleSubmit}>
-                    <label>
+                <form onSubmit={this.handleSubmit} className={"font-color--primary"}>
+                    <label className={"font-color--primary"}>
                         Name:
                         <input type="text" name="name" value={this.state.value} onChange={this.handleChange} />
                     </label>
-                    <label>
+                    <label className={"font-color--primary"}>
                         magnet link:
                         <input type="text" name={"link"} value={this.state.value} onChange={this.handleChange} />
                     </label>
-                    <label>
+                    <label className={"font-color--primary"}>
                         description:
                         <textarea name={"description"} value={this.state.value} onChange={this.handleChange} />
                     </label>
-                    <button type={"submit"} className="hollow button" href="#">Save !</button>
+                    <button type={"submit"} className="button--save_magnet width-100 padding-vertical-1" href="#">Save !</button>
                 </form>
                 </div>
             </div>

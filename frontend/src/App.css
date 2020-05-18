@@ -1,3 +1,25 @@
+#root {
+  min-height: 100vh;
+  background-color: #130e0e; }
+  #root .card {
+    -webkit-box-shadow: 0px 0px 20px -2px #00dcff;
+    -moz-box-shadow: 0px 0px 20px -2px #00dcff;
+    box-shadow: 0px 0px 20px -2px #00dcff; }
+    #root .card-divider {
+      background: #191919; }
+    #root .card-section {
+      background: #252525; }
+  #root .button--save_magnet {
+    color: white;
+    border: 1px solid white; }
+
+.font-color--primary {
+  color: white; }
+
+.primary--holow {
+  color: #00dcff;
+  background-color: #00dcff !important; }
+
 .cursor-pointer {
   cursor: pointer; }
 
