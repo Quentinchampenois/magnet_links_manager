@@ -9,12 +9,15 @@ import Links from "./components/Links";
 class App extends React.Component {
   render() {
     return (
-        <div id={"app"} className={"row font-color--primary"}>
-            <header>
-                <div>
-                    <div>Home</div>
-                    <div>Connexion</div>
+        <div id={"app"} className={"grid-container font-color--primary"}>
+            <header className="row align-center-middle">
+                <div className={"columns small-2"}>
+                    <img src="magnet-icon.png" alt="logo"/>
                 </div>
+                <ul className={"columns small-10 menu align-right align-middle"}>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Connexion</a></li>
+                </ul>
             </header>
             <main>
                 <Links />
