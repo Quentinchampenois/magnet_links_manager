@@ -1,14 +1,15 @@
 import React from 'react';
+import {Formik} from 'formik';
 
 class LinkForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-        };
+        this.state = {};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.validator = this.validator.bind(this);
+
+        this.MIN_LEN = 6;
     }
 
     handleChange(event) {
@@ -22,37 +23,8 @@ class LinkForm extends React.Component {
         this.validator()
     }
 
-    validator() {
-        const nameValidator = this.nameValidator(this.state.name);
-        const linkValidator = this.linkValidator(this.state.link);
-        const descriptionValidator = this.descriptionValidator(this.state.description);
-        if (nameValidator && linkValidator && descriptionValidator) {
-            console.log("Form is valid !");
-            return
-        }
-        console.log("Form is invalid");
-    }
-
-    nameValidator(name) {
-        const MIN_LEN = 5;
-        if (name == null || name.length < MIN_LEN) {
-            return false;
-        }
-        return true;
-    }
-    linkValidator(link) {
-        const LEN = 5;
-        if (link == null || link.length !== LEN) {
-            return false;
-        }
-        return true;
-    }
-    descriptionValidator(description) {
-        const MIN_LEN = 5;
-        if (description == null || description.length < MIN_LEN) {
-            return false;
-        }
-        return true;
+    componentWillUnmount() {
+        alert("stopppp")
     }
 
     render() {
@@ -62,21 +34,87 @@ class LinkForm extends React.Component {
                     <h3>Create new Magnet Link</h3>
                 </div>
                 <div className="card-section">
-                <form onSubmit={this.handleSubmit} className={"font-color--primary"}>
-                    <label className={"font-color--primary"}>
-                        Name
-                        <input type="text" name={"name"} value={this.state.name} onChange={this.handleChange} required={"True"}/>
-                    </label>
-                    <label className={"font-color--primary"}>
-                        magnet link
-                        <input type="text" name={"link"} value={this.state.link} onChange={this.handleChange} required={"True"}/>
-                    </label>
-                    <label className={"font-color--primary"}>
-                        description
-                        <textarea name={"description"} value={this.state.description} onChange={this.handleChange} required={"True"}/>
-                    </label>
-                    <button type={"submit"} className="button--save_magnet width-100 padding-vertical-1" href="#">Save !</button>
-                </form>
+                    <Formik
+                        initialValues={{name: '', link: '', description: ''}}
+                        validate={values => {
+                            const errors = {};
+                            if (!values.name) {
+                                errors.name = 'Please add a name';
+                            } else if (
+                                values.name.length < this.MIN_LEN
+                            ) {
+                                errors.name = `Name is too short (${this.MIN_LEN} characters min)`;
+                            }
+                            if (!values.description) {
+                                errors.description = 'Please add a description';
+                            } else if (
+                                values.description.length < this.MIN_LEN
+                            ) {
+                                errors.description = `Description is too short (${this.MIN_LEN} characters min)`;
+                            }
+                            if (!values.link) {
+                                errors.link = 'Please add a magnet link';
+                            } else if (
+                                !/^magnet:\?xt=urn:btih:[a-zA-Z0-9]*$/g.test(values.link)
+                            ) {
+                                errors.link = "Seems to be a wrong magnet link format";
+                            }
+                            return errors;
+                        }}
+                        onSubmit={(values, {setSubmitting}) => {
+                            setTimeout(() => {
+                                alert(JSON.stringify(values, null, 2));
+                                setSubmitting(false);
+                            }, 400);
+                        }}
+                    >
+                        {({
+                              values,
+                              errors,
+                              touched,
+                              handleChange,
+                              handleBlur,
+                              handleSubmit,
+                              isSubmitting,
+                              /* and other goodies */
+                          }) => (
+                            <form onSubmit={handleSubmit}>
+                                <label className={"font-color--primary"}>Name</label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    className="margin-bottom-0"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.name}
+                                />
+                                {errors.name && touched.name && errors.name}
+                                <label className={"margin-top-1 font-color--primary"}>Description</label>
+                                <textarea
+                                    name="description"
+                                    value={values.description}
+                                    className="margin-bottom-0"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                                {errors.description && touched.description && errors.description}
+                                <label className={"margin-top-1 font-color--primary"}>Link</label>
+                                <input
+                                    type="text"
+                                    name="link"
+                                    className="margin-bottom-0"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.link}
+                                />
+                                {errors.link && touched.link && errors.link}
+                                <button type="submit" className={"margin-top-2 button--save_magnet width-100 padding-vertical-1"}
+                                        disabled={isSubmitting}>
+                                    Save !
+                                </button>
+                            </form>
+                        )}
+                    </Formik>
                 </div>
             </div>
         );
